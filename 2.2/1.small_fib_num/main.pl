@@ -14,7 +14,5 @@ sub fib {
     return $a;
 }
 
-for (my $var = 0; $var < 3; $var++){
-    chomp(my $fib_num = <STDIN>);
-    say fib($fib_num);
-}
+chomp(my $var = <STDIN>);
+say fib($var);

@@ -1,5 +1,6 @@
 from collections import Counter
 import heapq
+import argparse
 
 
 class Leaf:
@@ -51,11 +52,32 @@ def encode(str_to_encode):
     return codes
 
 
+def decode(codes, str_to_decode):
+    decoded_str = ''
+    tmp_code = ''
+    for symbol in str_to_decode:
+        tmp_code += symbol
+        if codes.get(tmp_code) is not None:
+            decoded_str += codes.get(tmp_code)
+            tmp_code = ''
+    return decoded_str
+
+
 if __name__ == "__main__":
-    input_str = input()
-    codes = encode(input_str)
-    encoded_str = ''.join(codes.get(letter) for letter in input_str)
-    print(len(Counter(input_str).items()), len(encoded_str))
-    for letter in sorted(codes):
-        print("{}: {}".format(letter, codes.get(letter)))
-    print(encoded_str)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-e', '--encode', help="Encodes normal string to Huffman code", action='store_true')
+    parser.add_argument('-d', '--decode', help="Decodes Huffman code to normal string", action='store_true')
+    args = parser.parse_args()
+    if args.decode:
+        letter_count, encoded_len = map(int, input().split())
+        raw_codes = (input().split(": ") for _ in range(letter_count))
+        codes = {code: letter for letter, code in raw_codes}
+        print(decode(codes, input()))
+    elif args.encode:
+        input_str = input()
+        codes = encode(input_str)
+        encoded_str = ''.join(codes.get(letter) for letter in input_str)
+        print(len(Counter(input_str).items()), len(encoded_str))
+        for letter in sorted(codes):
+            print("{}: {}".format(letter, codes.get(letter)))
+        print(encoded_str)

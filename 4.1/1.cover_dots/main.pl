@@ -9,7 +9,6 @@
 
 use strict;
 use warnings FATAL => 'all';
-use Data::Dumper;
 
 
 #-------------------------------------------------------------------------------
@@ -17,8 +16,7 @@ use Data::Dumper;
 #
 # @param  {array of arrays}  @segments            - user's segments
 #
-# @return {array}                                 - array of dots
-# @return {array}                                 - array of errors
+# @return {array}                                 - array of dots || array of errors because of wrong input
 #-------------------------------------------------------------------------------
 
 sub cover {

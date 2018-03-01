@@ -11,16 +11,18 @@ use strict;
 use warnings FATAL => 'all';
 
 
-#-------------------------------------------------------------------------------
-# @brief  cover                                   - searches minimal set of dots
+#-----------------------------------------------------------------------------------------
+# @brief  cover                                            - searches minimal set of dots
 #
-# @param  {array of arrays}  @segments            - user's segments
+# @param  {array of arrays of integer}  @segments          - user's segments
 #
-# @return {array}                                 - array of dots || array of errors because of wrong input
-#-------------------------------------------------------------------------------
+# @return {array}                                          - array of dots || array of
+#                                                            errors because of wrong input
+#-----------------------------------------------------------------------------------------
 
 sub cover {
     my @segments = @_;
+    (@segments) or return qw /"No values given"/;
     my @dots;
     eval {
         @segments = sort {$a->[1] <=> $b->[1]} @segments;
@@ -36,7 +38,7 @@ sub cover {
         }
     };
     if ($@) {
-        return("Wrong input");
+        return qw/"Wrong input"/;
     }
     return @dots;
 }
@@ -44,6 +46,7 @@ sub cover {
 my $segment_count;
 my @segments;
 chomp($segment_count = <STDIN>);
+($segment_count > 0) or die "Number of segments must be > 0";
 foreach (0 .. ($segment_count - 1)) {
     my $segment;
     chomp($segment = <STDIN>);

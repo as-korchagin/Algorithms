@@ -1,0 +1,148 @@
+C:\Users\andrey.korchagin\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/andrey.korchagin/Documents/Algorithms/4.3/1.heap_with_priorities/main.py
+100
+Insert 29
+Insert 246
+Insert 543
+ExtractMax
+Insert 944
+Insert 930
+ExtractMax
+ExtractMax
+ExtractMax
+Insert 105
+Insert 255
+Insert 364
+Insert 157
+ExtractMax
+Insert 746
+ExtractMax
+Insert 692
+Insert 526
+Insert 797
+ExtractMax
+Insert 344
+Insert 304
+ExtractMax
+Insert 669
+Insert 96
+ExtractMax
+ExtractMax
+Insert 341
+Insert 668
+ExtractMax
+Insert 324
+ExtractMax
+ExtractMax
+Insert 368
+ExtractMax
+Insert 968
+ExtractMax
+Insert 904
+ExtractMax
+ExtractMax
+Insert 660
+Insert 465
+ExtractMax
+ExtractMax
+Insert 146
+Insert 831
+Insert 860
+ExtractMax
+ExtractMax
+ExtractMax
+Insert 985
+ExtractMax
+Insert 997
+ExtractMax
+Insert 860
+ExtractMax
+Insert 740
+ExtractMax
+Insert 350
+ExtractMax
+Insert 782
+Insert 536
+Insert 911
+Insert 983
+Insert 633
+Insert 459
+Insert 921
+ExtractMax
+Insert 786
+Insert 948
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+Insert 66
+Insert 588
+ExtractMax
+Insert 763
+ExtractMax
+Insert 281
+Insert 157
+Insert 49
+Insert 277
+Insert 967
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+Insert 766
+ExtractMax
+Insert 772
+Insert 139
+Insert 168
+ExtractMax
+ExtractMax
+ExtractMax
+[543, 543]
+[944, 944]
+[930, 930]
+[246, 246]
+[364, 364]
+[746, 746]
+[797, 797]
+[692, 692]
+[669, 669]
+[526, 526]
+[668, 668]
+[344, 344]
+[341, 341]
+[368, 368]
+[968, 968]
+[904, 904]
+[324, 324]
+[660, 660]
+[465, 465]
+[860, 860]
+[831, 831]
+[304, 304]
+[985, 985]
+[997, 997]
+[860, 860]
+[740, 740]
+[350, 350]
+[983, 983]
+[948, 948]
+[921, 921]
+[911, 911]
+[782, 786]
+[786, 786]
+[633, 633]
+[763, 763]
+[967, 967]
+[588, 588]
+[536, 536]
+[281, 459]
+[459, 459]
+[277, 277]
+[255, 255]
+[766, 766]
+[772, 772]
+[168, 168]
+[157, 157]

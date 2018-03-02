@@ -1,4 +1,4 @@
-a, b = map(lambda x: int(x), input().split())
+a, b = map(int, input().split())
 if a == b or min(a, b) == 0:
     pass
 else:

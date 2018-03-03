@@ -1,15 +1,16 @@
 import re
-import math
 
 
 class Heap:
 
     def __init__(self):
-        self.heap = []
+        self.heap = [0]
 
     def walk_up(self):
         item_to_walk_up_index = len(self.heap) - 1
         while True:
+            if item_to_walk_up_index == 1:
+                break
             if self.heap[item_to_walk_up_index] > self.heap[int(item_to_walk_up_index / 2)]:
                 self.heap[item_to_walk_up_index], self.heap[int(item_to_walk_up_index / 2)] = \
                     self.heap[int(item_to_walk_up_index / 2)], self.heap[item_to_walk_up_index]
@@ -18,35 +19,36 @@ class Heap:
                 break
 
     def walk_down(self):
-        max_elem = max(self.heap)
-        if max_elem == 911:
-            z = 911
-        element_to_extract = self.heap.pop(0)
-        self.heap.insert(0, self.heap.pop())
-        element_to_walk_index = 0
-        while element_to_walk_index + 2 <= len(self.heap) - 1:
-            if element_to_walk_index + 2 > len(self.heap) - 1:
-                if self.heap[element_to_walk_index] > self.heap[element_to_walk_index + 1]:
-                    break
-                max_elem_index = element_to_walk_index + 1
-            else:
-                if self.heap[element_to_walk_index] > self.heap[element_to_walk_index + 1] and \
-                        self.heap[element_to_walk_index] > self.heap[element_to_walk_index + 2]:
-                    break
-                max_elem_index = element_to_walk_index + 1 \
-                    if self.heap[element_to_walk_index + 1] > self.heap[element_to_walk_index + 2] else \
-                    element_to_walk_index + 2
+        element_to_extract = self.heap.pop(1)
+        self.heap.insert(1, self.heap.pop())
+        element_to_walk_index = 1
+        while True:
+            if element_to_walk_index * 2 + 1 <= len(self.heap) - 1:
+                if self.heap[element_to_walk_index * 2] > self.heap[element_to_walk_index] \
+                        or self.heap[element_to_walk_index * 2 + 1] > self.heap[element_to_walk_index]:
 
-            self.heap[element_to_walk_index], self.heap[max_elem_index] = \
-                self.heap[max_elem_index], self.heap[element_to_walk_index]
-            element_to_walk_index = max_elem_index
-        return [element_to_extract, max_elem]
+                    max_elem_index = element_to_walk_index * 2 if self.heap[element_to_walk_index * 2] > self.heap[
+                        element_to_walk_index * 2 + 1] else element_to_walk_index * 2 + 1
+
+                    self.heap[element_to_walk_index], self.heap[max_elem_index] = \
+                        self.heap[max_elem_index], self.heap[element_to_walk_index]
+                    element_to_walk_index = max_elem_index
+                else:
+                    break
+            elif element_to_walk_index * 2 == len(self.heap) - 1:
+                if self.heap[element_to_walk_index] < self.heap[element_to_walk_index * 2]:
+                    self.heap[element_to_walk_index], self.heap[element_to_walk_index * 2] = \
+                        self.heap[element_to_walk_index * 2], self.heap[element_to_walk_index]
+                else:
+                    break
+            else:
+                break
+
+        return element_to_extract
 
     def insert(self, element):
-        if element == 786:
-            z = 786
         self.heap.append(element)
-        if len(self.heap) > 1:
+        if len(self.heap) > 2:
             self.walk_up()
 
     def extract_max(self):
@@ -61,8 +63,6 @@ def make_heap(operations):
     for value in operations:
         value = re.findall(r'(\d+)', value)
         if value:
-            if value[0] == 157:
-                heap.insert(int(value[0]))
             heap.insert(int(value[0]))
         else:
             print(heap.extract_max())

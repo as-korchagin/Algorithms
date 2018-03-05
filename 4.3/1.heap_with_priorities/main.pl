@@ -11,12 +11,12 @@ use strict;
 use warnings FATAL => 'all';
 
 package Heap; {
+
     #------------------------------------------------------------------------------
     # @brief new                                      - creates a new Heap object
     #
     # @return                                         - returns created heap object
     #------------------------------------------------------------------------------
-
     sub new() {
         my ($class) = @_;
         my $self = {};
@@ -29,7 +29,6 @@ package Heap; {
     # @brief walkUp                              - raises the last appended element
     #                                              to his place in heap
     #------------------------------------------------------------------------------
-
     sub walkUp {
         my ($self) = @_;
         my $item_to_walk_up_index = scalar(@{$self->{'heap'}}) - 1;
@@ -53,7 +52,6 @@ package Heap; {
     #                                              place in heap
     #                                              and removing the biggest one
     #------------------------------------------------------------------------------
-
     sub walkDown {
         my ($self) = @_;
         my $element_to_walk_index = 1;
@@ -90,8 +88,7 @@ package Heap; {
     #
     # @return {integer}                             - the biggest value in heap
     #------------------------------------------------------------------------------
-
-    sub extractMax {
+    sub extractMin {
         my ($self) = @_;
         my $element_to_extract = splice @{$self->{'heap'}}, 1, 1;
         unless (scalar(@{$self->{'heap'}}) == 1) {
@@ -106,7 +103,6 @@ package Heap; {
     # @param {integer} $element                    - an element that user want to
     #                                                add to heap
     #------------------------------------------------------------------------------
-
     sub insert {
         my ($self, $element) = @_;
         push @{$self->{'heap'}}, $element;
@@ -139,7 +135,7 @@ foreach my $operation (@operations) {
         $heap->insert($2);
     }
     elsif ($operation =~ /(^[A-Za-z]+$)/) {
-        push @max_values, $heap->extractMax();
+        push @max_values, $heap->extractMin();
     }
     else {
         print "$operation";

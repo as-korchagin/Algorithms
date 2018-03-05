@@ -1,10 +1,29 @@
+#  <StartHeader> ********************************************************************
+#
+#  Script implements a Max Heap algorithm
+#
+#  Project Name:       <Algorithms>
+#  Language:           <Python>
+#  </EndHeader> *********************************************************************
+
 import re
 
 
 class Heap:
 
+    # ------------------------------------------------------------------------------
+    # @brief new                                      - creates a new Heap object
+    #
+    # @return                                         - returns created heap object
+    # ------------------------------------------------------------------------------
+
     def __init__(self):
         self.heap = [0]
+
+    # ------------------------------------------------------------------------------
+    # @brief walkUp                              - raises the last appended element
+    #                                              to his place in heap
+    # ------------------------------------------------------------------------------
 
     def walk_up(self):
         item_to_walk_up_index = len(self.heap) - 1
@@ -17,6 +36,12 @@ class Heap:
                 item_to_walk_up_index = int(item_to_walk_up_index / 2)
             else:
                 break
+
+    # ------------------------------------------------------------------------------
+    # @brief walkDown                            - lowers the element down to his
+    #                                              place in heap
+    #                                              and removing the biggest one
+    # ------------------------------------------------------------------------------
 
     def walk_down(self):
         if len(self.heap) == 0:
@@ -48,16 +73,27 @@ class Heap:
 
         return element_to_extract
 
+    # ------------------------------------------------------------------------------
+    # @brief insert                                - inserting an element into heap
+    #
+    # @param {integer} $element                    - an element that user want to
+    #                                                add to heap
+    # ------------------------------------------------------------------------------
+
     def insert(self, element):
         self.heap.append(element)
         if len(self.heap) > 2:
             self.walk_up()
 
+    # ------------------------------------------------------------------------------
+    # @brief extractMax                             - searching the biggest element
+    #                                                 in heap ($self{'heap'}->[0])
+    #
+    # @return {integer}                             - the biggest value in heap
+    # ------------------------------------------------------------------------------
+
     def extract_max(self):
         return self.walk_down()
-
-    def get_heap(self):
-        return self.heap
 
 
 def make_heap(operations):

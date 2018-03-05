@@ -3,6 +3,8 @@ use strict;
 use warnings FATAL => 'all';
 use 5.010;
 
+$|++;
+
 ##  <StartHeader> ********************************************************************
 ##
 ##  Package implements a Min Heap algorithm
@@ -293,6 +295,34 @@ sub encode {
     print $encoded_str;
 }
 
-my $string_to_encode;
-chomp($string_to_encode = <STDIN>);
-encode(split //, $string_to_encode);
+sub decode {
+    my ($codes, $str_to_decode) = @_;
+    my $tmp_str;
+    my $decoded_str = '';
+    foreach my $digit (split //, $str_to_decode) {
+        $tmp_str .= $digit;
+        if (defined $codes->{$tmp_str}) {
+            $decoded_str .= $codes->{$tmp_str};
+            $tmp_str = '';
+        }
+        else {
+            next;
+        }
+    }
+    print $decoded_str;
+}
+
+my $input_data;
+chomp($input_data = <STDIN>);
+my %codes = ();
+my ($letters_count, $encoded_str_len) = split / /, $input_data;
+foreach (1 .. $letters_count) {
+    chomp($input_data = <STDIN>);
+    $input_data =~ /(\w): (\d+)/;
+    $codes{$1} = $2;
+}
+%codes = reverse(%codes);
+my $str_to_decode;
+chomp($str_to_decode = <STDIN>);
+
+decode(\%codes, $str_to_decode);

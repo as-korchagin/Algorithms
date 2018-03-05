@@ -19,6 +19,8 @@ class Heap:
                 break
 
     def walk_down(self):
+        if len(self.heap) == 0:
+            z = 0
         element_to_extract = self.heap.pop(1)
         self.heap.insert(1, self.heap.pop())
         element_to_walk_index = 1
@@ -65,7 +67,7 @@ def make_heap(operations):
         if value:
             heap.insert(int(value[0]))
         else:
-            print(heap.extract_max())
+            heap.extract_max()
 
 
 if __name__ == "__main__":

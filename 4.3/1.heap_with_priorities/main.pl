@@ -88,7 +88,7 @@ package Heap; {
     #
     # @return {integer}                             - the biggest value in heap
     #------------------------------------------------------------------------------
-    sub extractMin {
+    sub extractMax {
         my ($self) = @_;
         my $element_to_extract = splice @{$self->{'heap'}}, 1, 1;
         unless (scalar(@{$self->{'heap'}}) == 1) {
@@ -135,7 +135,7 @@ foreach my $operation (@operations) {
         $heap->insert($2);
     }
     elsif ($operation =~ /(^[A-Za-z]+$)/) {
-        push @max_values, $heap->extractMin();
+        push @max_values, $heap->extractMax();
     }
     else {
         print "$operation";

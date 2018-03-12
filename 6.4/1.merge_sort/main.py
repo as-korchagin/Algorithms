@@ -15,12 +15,15 @@ def merge(merge_item_1, merge_item_2):
 def merge_sort(array, left, right):
     if left < right:
         median = int((left + right) / 2)
-        merge(merge_sort(array, left, median), merge_sort(array, median + 1, right))
-    return array[left:right]
+        array[left: right + 1] = merge(merge_sort(array, left, median), merge_sort(array, median + 1, right))
+    return array[left: right + 1]
 
 
 if __name__ == "__main__":
     array_length = int(input())
     array = list(map(int, input().split()))
     assert len(array) == array_length, "Array length invalid"
-    merge_sort(array, 0, array_length - 1)
+    print(merge_sort(array, 0, array_length - 1))
+# import random
+# for _ in range(100):
+#     print(random.randint(1, 100), end=' ')
